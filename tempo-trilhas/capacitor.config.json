@@ -1,0 +1,13 @@
+{
+  "appId": "com.example.app",
+  "appName": "tempo-trilhas",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/tempo-trilhas",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
