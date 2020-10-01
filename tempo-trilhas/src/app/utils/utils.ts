@@ -11,6 +11,13 @@ export class Utils {
     public static controlVisuals = { bgclass: 'clear', icon: 'sunny-outline'};
     public static allInOnePredict: AllInOne;
 
-    public static pavuna = { latitude: '-22.8408491', longitude: '-48.5126424' }; 
-    public static tres_pedras = { latitude: '-23.0170796', longitude: '-48.3165639' };
+    public static convertUnixToDate(unix) {
+        let date = new Date(unix);
+        return date.toLocaleString();
+    }
+
+    public static convertUnixToOnlyDate(unix) {
+        let date = new Date(unix * 1000);
+        return date.toLocaleDateString();
+    }
 }

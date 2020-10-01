@@ -272,3 +272,12 @@
       visibility: hidden;
     }
   }
+
+.po-full {
+  .po-button {
+    width: 100%;
+  }
+}
+
+.flex { display: flex; }
+.space-between { justify-content: space-between; }

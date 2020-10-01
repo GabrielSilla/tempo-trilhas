@@ -14,7 +14,7 @@
   <span class="ml-20"> Tempo das Trilhas</span>
 </div>
 
-<po-loading-overlay *ngIf="hideOverlay"
+<po-loading-overlay *ngIf="showOverlay"
     [p-screen-lock]="true"
     [p-text]="'Carregando'" >
 </po-loading-overlay>
@@ -33,16 +33,40 @@
   </div>
 
   <po-accordion class="w-100">
-    <po-accordion-item p-label="Botucatu - Cachoeiras Pavuna">
-       <img class="img" src="../assets/img/pavuna.jpg" alt="">
-       <h2>Tempo Atual</h2>
-       <po-grid [p-data]="dataPavuna" [p-columns]="columns"> </po-grid>
-    </po-accordion-item>
-  
-    <po-accordion-item p-label="Bofete - Sitio Três Pedras">
-       <img class="img" src="../assets/img/tres-pedras.jpg" alt="">
-       <h2>Tempo Atual</h2>
-       <po-grid [p-data]="dataTresPedras" [p-columns]="columns"> </po-grid>
+    <po-accordion-item *ngFor="let local of locais" [p-label]="local.title">
+       <img class="img" [src]="local.img" alt="">
+       <po-button class="po-full"
+          (p-click)="buscar(local)"
+          p-icon="po-icon po-icon-refresh"
+          p-label="Buscar/Atualizar"
+          p-loading="boolean"
+          p-small="false">
+       </po-button>
+       <div *ngIf="local.predict">
+          <h3 class="mt-20">Tempo Atual</h3>
+          <h6 *ngIf="local.lastSearch">Ultima pesquisa: - {{ local.lastSearch }}</h6>
+          <br>
+
+          <div *ngIf="local.predict" class="flex space-between">
+          <po-button
+              (p-click)="previousDay(local)"
+              p-icon="po-icon po-icon-arrow-left"
+              p-label="Dia anterior"
+              p-loading="boolean"
+              p-small="false"
+              p-disabled="{{ local.day == 0 }}">
+          </po-button>
+          <po-button
+              (p-click)="nextDay(local)"
+              p-icon="po-icon po-icon-arrow-right"
+              p-label="Proximo dia"
+              p-loading="boolean"
+              p-small="false"
+              p-disabled="{{ local.day == 5 }}">
+          </po-button>
+          </div>  
+          <po-grid [p-data]="local.dataRows" [p-columns]="columns"></po-grid>
+      </div>
     </po-accordion-item>
   </po-accordion>
 

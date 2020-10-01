@@ -12,4 +12,5 @@ export class Day {
     public weather: Array<Weather>;
     public clouds: number;
     public uvi: number;
+    public pop: number;
 }
