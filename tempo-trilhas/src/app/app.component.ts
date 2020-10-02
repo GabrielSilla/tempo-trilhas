@@ -23,6 +23,7 @@ export class AppComponent implements OnInit {
     { property: 'name', label: 'Propriedade', align: 'right', readonly: true, freeze: true, width: 120 },
     { property: 'value', label: 'Valor', width: '200px', required: true },
   ];
+  
   public showOverlay = false;
 
   public locais = [
